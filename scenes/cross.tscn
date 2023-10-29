@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b48loasv30u40"]
+
+[node name="Cross" type="Sprite2D"]
