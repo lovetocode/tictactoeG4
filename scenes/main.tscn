@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu3iuquh61mbv"]
+[gd_scene load_steps=6 format=3 uid="uid://cu3iuquh61mbv"]
 
 [ext_resource type="PackedScene" uid="uid://b5ni31lhoahul" path="res://scenes/board.tscn" id="1_hivfl"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_ooapa"]
+[ext_resource type="PackedScene" uid="uid://ct4ltg2gun4yq" path="res://scenes/circle.tscn" id="2_qg1jq"]
+[ext_resource type="PackedScene" uid="uid://b48loasv30u40" path="res://scenes/cross.tscn" id="3_qp4wk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xt2x"]
+bg_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+border_width_left = 5
+border_color = Color(0.984314, 0.705882, 0.811765, 1)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_ooapa")
+circle_scene = ExtResource("2_qg1jq")
+cross_scene = ExtResource("3_qp4wk")
 
 [node name="Board" parent="." instance=ExtResource("1_hivfl")]
 position = Vector2(300, 300)
+
+[node name="SidePanel" type="Panel" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -301.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4xt2x")
