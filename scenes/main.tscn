@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu3iuquh61mbv"]
+[gd_scene load_steps=7 format=3 uid="uid://cu3iuquh61mbv"]
 
 [ext_resource type="PackedScene" uid="uid://b5ni31lhoahul" path="res://scenes/board.tscn" id="1_hivfl"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ooapa"]
@@ -6,9 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://b48loasv30u40" path="res://scenes/cross.tscn" id="3_qp4wk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xt2x"]
-bg_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+bg_color = Color(0.490196, 0.490196, 0.490196, 1)
 border_width_left = 5
 border_color = Color(0.984314, 0.705882, 0.811765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3s8k"]
+bg_color = Color(0.956863, 0.956863, 0.956863, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ooapa")
@@ -27,3 +40,20 @@ offset_left = -301.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4xt2x")
+
+[node name="PlayerLabel" type="Label" parent="."]
+offset_left = 612.0
+offset_top = 102.0
+offset_right = 883.0
+offset_bottom = 166.0
+theme_override_font_sizes/font_size = 46
+text = "Next Player:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 650.0
+offset_top = 200.0
+offset_right = 850.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3s8k")
