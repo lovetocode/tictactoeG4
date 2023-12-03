@@ -16,12 +16,7 @@ func _ready():
 	board_size = board.texture.get_width()
 	# Divide board by 3 to get the individual size of each cell.
 	cell_size = board_size / 3
-	player = 1
-	grid_data = [
-		[0,0,0],
-		[0,0,0],
-		[0,0,0]
-		]
+	new_game()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
