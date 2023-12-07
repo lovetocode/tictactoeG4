@@ -51,7 +51,7 @@ text = "Next Player:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="."]
+[node name="PlayerPanel" type="Panel" parent="."]
 offset_left = 650.0
 offset_top = 200.0
 offset_right = 850.0
