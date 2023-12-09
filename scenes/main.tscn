@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu3iuquh61mbv"]
+[gd_scene load_steps=8 format=3 uid="uid://cu3iuquh61mbv"]
 
 [ext_resource type="PackedScene" uid="uid://b5ni31lhoahul" path="res://scenes/board.tscn" id="1_hivfl"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ooapa"]
 [ext_resource type="PackedScene" uid="uid://ct4ltg2gun4yq" path="res://scenes/circle.tscn" id="2_qg1jq"]
 [ext_resource type="PackedScene" uid="uid://b48loasv30u40" path="res://scenes/cross.tscn" id="3_qp4wk"]
+[ext_resource type="PackedScene" uid="uid://dm6aj81oudb6s" path="res://scenes/game_over.tscn" id="5_bm8hn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xt2x"]
 bg_color = Color(0.490196, 0.490196, 0.490196, 1)
@@ -57,3 +58,8 @@ offset_top = 200.0
 offset_right = 850.0
 offset_bottom = 400.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y3s8k")
+
+[node name="GameOver" parent="." instance=ExtResource("5_bm8hn")]
+process_mode = 2
+
+[connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]
