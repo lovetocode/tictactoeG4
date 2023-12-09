@@ -8,6 +8,7 @@ extends Node
 @export var cross_scene: PackedScene
 
 var player: int
+var moves: int
 var grid_data: Array
 var grid_pos: Vector2i
 var player_panel_pos: Vector2i
@@ -43,6 +44,7 @@ func _input(event):
 				# convert mouse location into grid position
 				grid_pos = Vector2i(event.position / cell_size)
 				if grid_data[grid_pos.y][grid_pos.x] == 0:
+					moves += 1
 					grid_data[grid_pos.y][grid_pos.x] = player
 					player *= -1 
 					# Place the players marker
@@ -50,11 +52,17 @@ func _input(event):
 					if check_win() != 0:
 						get_tree().paused = true
 						game_over.show()
+					elif moves == 9:
+							get_tree().paused = true
+							game_over.show()
+							game_over.get_node("ResultLabel").text = "Its a tie"
+							
 					# update the marker.
 					temp_marker.queue_free() 
 					create_marker(player, player_panel_pos + Vector2i(cell_size / 2, cell_size / 2), true)
 func new_game():
 	player = 1
+	moves = 0
 	winner = 0
 	grid_data = [
 		[0,0,0],
@@ -95,11 +103,12 @@ func check_win():
 		
 		if row_sum == 3 or col_sum == 3 or diagonal1_sum == 3 or diagonal2_sum == 3:
 			winner = 1
+			game_over.get_node("ResultLabel").text = "Player 1 wins!"
 		elif row_sum == -3 or col_sum == -3 or diagonal1_sum == -3 or diagonal2_sum == -3:
 			winner = -1
+			game_over.get_node("ResultLabel").text = "Player 2 wins!"
 	return winner
 		
-
 
 func _on_game_over_restart():
 	new_game()
